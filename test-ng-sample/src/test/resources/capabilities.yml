@@ -1,0 +1,23 @@
+user: raveendratudangi5
+access_key: xBv78saWwrNBEaJBTXwu
+project: TestNG Sample
+build: Sample Build
+platforms:
+  - os: Windows
+    os_version: '10'
+    browser: Internet Explorer
+    browser_version: '11.0'
+    count: 2
+  - os: OS X
+    os_version: Catalina
+    browser: Safari
+    browser_version: '13.0'
+    count: 2
+  - os: Android
+    os_version: '11.0'
+    device: Samsung Galaxy S21
+    count: 2
+  - os: iPhone
+    os_version: '13.0'
+    device: iPhone XS
+    count: 2
