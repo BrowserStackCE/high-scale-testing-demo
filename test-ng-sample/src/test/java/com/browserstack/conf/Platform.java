@@ -16,8 +16,6 @@ public class Platform {
 
     private String device;
 
-    private int count;
-
 
     public String getOs() {
         return os;
@@ -57,13 +55,5 @@ public class Platform {
 
     public void setDevice(String device) {
         this.device = device;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 }

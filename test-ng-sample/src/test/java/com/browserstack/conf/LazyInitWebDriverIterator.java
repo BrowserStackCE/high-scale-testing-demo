@@ -29,35 +29,12 @@ public class LazyInitWebDriverIterator implements Iterator<Object[]> {
         this.testParams = this.populateTestParams(otherParamsList);
     }
 
-    /*public LazyInitWebDriverIterator(String testMethodName, List<Object[]> testParams) {
-        this.testMethodName = testMethodName;
-        this.platforms = WebDriverFactory.getInstance().getPlatforms();
-        this.createManagedWebDriver = false;
-        if (testParams == null) {
-            testParams = new ArrayList();
-        }
-
-        this.testParams = this.populateTestParams(testParams);
-    }
-
-    public LazyInitWebDriverIterator(Boolean createManagedWebDriver, Object[][] testParams) {
-        this.testMethodName = "";
-        this.platforms = WebDriverFactory.getInstance().getPlatforms();
-        this.createManagedWebDriver = createManagedWebDriver;
-        List<Object[]> testParamsList = new ArrayList();
-        if (testParams != null) {
-            testParamsList = (List)Arrays.stream(testParams).collect(Collectors.toList());
-        }
-
-        this.testParams = this.populateTestParams((List)testParamsList);
-    }
-*/
     private List<Object[]> populateTestParams(List<Object[]> testParams) {
         int idx = 0;
         ArrayList tempTestParams = new ArrayList();
 
         do {
-            Object[] testParam = (Object[])testParams.get(idx);
+            Object[] testParam = testParams.get(idx);
             if (testParam == null) {
                 testParam = new Object[0];
             }

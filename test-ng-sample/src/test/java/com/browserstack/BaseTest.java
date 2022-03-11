@@ -17,20 +17,4 @@ public class BaseTest {
                 new Object[0]);
     }
 
-    /*@DataProvider(name="managedwebdriver", parallel = true)
-    public static Object[] provideManagedWebDrivers(Method testMethod) {
-        List<ManagedWebDriver> managedWebDrivers = createManagedWebDrivers(testMethod.getName());
-        return managedWebDrivers.toArray(new ManagedWebDriver[0]);
-    }
-
-    protected static List<ManagedWebDriver> createManagedWebDrivers(String testMethodName) {
-        WebDriverFactory webDriverFactory = WebDriverFactory.getInstance();
-        final List<ManagedWebDriver> managedWebDrivers = new ArrayList<>();
-        List<Platform> platforms = webDriverFactory.getPlatforms();
-        platforms.forEach( p -> {
-            managedWebDrivers.add(new ManagedWebDriver(testMethodName, p));
-        });
-        return managedWebDrivers;
-    }}
-*/
 }

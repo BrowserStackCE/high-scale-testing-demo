@@ -1,5 +1,7 @@
 package com.browserstack;
 
+import com.browserstack.conf.CsvUtil;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +28,8 @@ public class FilterTest extends BaseTest {
                 .map(WebElement::getText)
                 .map(String::trim)
                 .collect(Collectors.toList());
-       // List<String> expectedValues = CsvUtil.readSpecificColumn("src/test/resources/data/products.csv", 2);
-      //  Assert..containsExactly(expectedValues.toArray(new String[0]));
+        List<String> expectedValues = CsvUtil.readSpecificColumn("src/test/resources/products.csv", 2);
+        Assertions.assertThat(values).containsExactly(expectedValues.toArray(new String[0]));
+
     }
 }

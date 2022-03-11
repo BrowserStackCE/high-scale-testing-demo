@@ -52,12 +52,7 @@ public class Configuration {
     }
 
     public void setPlatforms(List<Platform> platforms) {
-        this.platforms = new ArrayList<>();
-        for (Platform platform:platforms){
-            for (int i=0;i<platform.getCount();i++){
-                this.platforms.add(platform);
-            }
-        }
+        this.platforms = platforms;
     }
 
     public List<Platform> getActivePlatforms() {
