@@ -1,18 +1,31 @@
-package com.browserstack.conf;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
-import org.testng.TestListenerAdapter;
+package com.browserstack.webdriver.testng.listeners;
 
 import java.util.Arrays;
 import java.util.Optional;
 
+import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.ITestResult;
+import org.testng.TestListenerAdapter;
+
+import com.browserstack.webdriver.core.WebDriverFactory;
+import com.browserstack.webdriver.testng.ManagedWebDriver;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @author Anirudha Khanna
+ */
 public class WebDriverListener extends TestListenerAdapter {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverListener.class);
     private static final String TEST_PASS_REASON = "Test Passed";
     private static final String TEST_PASS_STATUS = "passed";
     private static final String TEST_FAIL_STATUS = "failed";
@@ -51,9 +64,15 @@ public class WebDriverListener extends TestListenerAdapter {
         if (webDriver == null) {
             return;
         }
+
         try {
-            String script = createExecutorScript(status, reason);
-                ((JavascriptExecutor) webDriver).executeScript(script);
+            if (webDriver instanceof RemoteWebDriver && WebDriverFactory.getInstance().isCloudDriver()) {
+                String script = createExecutorScript(status, reason);
+                LOGGER.debug("Script to execute:: {}", script);
+                if (StringUtils.isNotEmpty(script)) {
+                    ((JavascriptExecutor) webDriver).executeScript(script);
+                }
+            }
         } finally {
             webDriver.quit();
         }
@@ -70,7 +89,7 @@ public class WebDriverListener extends TestListenerAdapter {
             reason = reason.substring(0, 255);
         }
         // Replacing all the special characters with whitespace
-        reason = reason.replaceAll("^[^a-zA-Z0-9]"," ");
+        reason.replaceAll("^[^a-zA-Z0-9]"," ");
 
         argumentsNode.put("status", status);
         argumentsNode.put("reason", reason);

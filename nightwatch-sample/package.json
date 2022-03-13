@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch -c conf/browserstack.js --env chrome,android --parallel"
+    "test": "nightwatch -c conf/browserstack.js --parallel"
   },
   "keywords": [],
   "author": "",

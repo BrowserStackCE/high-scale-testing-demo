@@ -28,7 +28,7 @@ module.exports = {
 
   // See https://nightwatchjs.org/guide/extending-nightwatch/plugin-api.html
   plugins: [],
-  
+
   // See https://nightwatchjs.org/guide/#external-globals
   globals_path : '',
 
@@ -141,33 +141,6 @@ module.exports = {
     },
 
     //////////////////////////////////////////////////////////////////////////////////
-    // Configuration for when using cucumber-js (https://cucumber.io)                |
-    //                                                                               |
-    // It uses the bundled examples inside the nightwatch examples folder; feel free |
-    // to adapt this to your own project needs                                       |
-    //////////////////////////////////////////////////////////////////////////////////
-    'cucumber-js': {
-      src_folders: ['examples/cucumber-js/features/step_definitions'],
-
-      test_runner: {
-        // set cucumber as the runner
-        type: 'cucumber',
-
-        // define cucumber specific options
-        options: {
-          //set the feature path
-          feature_path: 'node_modules/nightwatch/examples/cucumber-js/*/*.feature',
-
-          // start the webdriver session automatically (enabled by default)
-          // auto_start_session: true
-
-          // use parallel execution in Cucumber
-          // parallel: 2 // set number of workers to use (can also be defined in the cli as --parallel 2
-        }
-      }
-    },
-
-    //////////////////////////////////////////////////////////////////////////////////
     // Configuration for when using the browserstack.com cloud service               |
     //                                                                               |
     // Please set the username and access key by setting the environment variables:  |
@@ -184,8 +157,8 @@ module.exports = {
       // https://www.browserstack.com/automate/capabilities?tag=selenium-4
       desiredCapabilities: {
         'bstack:options' : {
-          userName: '${BROWSERSTACK_USER}',
-          accessKey: '${BROWSERSTACK_KEY}',
+          userName: '${BROWSERSTACK_USERNAME}',
+          accessKey: '${BROWSERSTACK_ACCESS_KEY}',
         }
       },
 
@@ -203,7 +176,7 @@ module.exports = {
     'browserstack.local': {
       extends: 'browserstack',
       desiredCapabilities: {
-        'browserstack.local': true
+        'browserstack.local': false
       }
     },
 
@@ -236,65 +209,6 @@ module.exports = {
       extends: 'browserstack',
       desiredCapabilities: {
         browserName: 'safari'
-      }
-    },
-
-    'browserstack.local_chrome': {
-      extends: 'browserstack.local',
-      desiredCapabilities: {
-        browserName: 'chrome'
-      }
-    },
-
-    'browserstack.local_firefox': {
-      extends: 'browserstack.local',
-      desiredCapabilities: {
-        browserName: 'firefox'
-      }
-    },
-    //////////////////////////////////////////////////////////////////////////////////
-    // Configuration for when using the Selenium service, either locally or remote,  |
-    //  like Selenium Grid                                                           |
-    //////////////////////////////////////////////////////////////////////////////////
-    selenium_server: {
-      // Selenium Server is running locally and is managed by Nightwatch
-      // Install the NPM package @nightwatch/selenium-server or download the selenium server jar file from https://github.com/SeleniumHQ/selenium/releases/, e.g.: selenium-server-4.1.1.jar
-      selenium: {
-        start_process: true,
-        port: 4444,
-        server_path: '', // Leave empty if @nightwatch/selenium-server is installed
-        command: 'standalone', // Selenium 4 only
-        cli_args: {
-          //'webdriver.gecko.driver': '',
-          //'webdriver.chrome.driver': ''
-        }
-      },
-      webdriver: {
-        start_process: false,
-        default_path_prefix: '/wd/hub'
-      }
-    },
-
-    'selenium.chrome': {
-      extends: 'selenium_server',
-      desiredCapabilities: {
-        browserName: 'chrome',
-        chromeOptions : {
-          w3c: true
-        }
-      }
-    },
-
-    'selenium.firefox': {
-      extends: 'selenium_server',
-      desiredCapabilities: {
-        browserName: 'firefox',
-        'moz:firefoxOptions': {
-          args: [
-            // '-headless',
-            // '-verbose'
-          ]
-        }
       }
     }
   }

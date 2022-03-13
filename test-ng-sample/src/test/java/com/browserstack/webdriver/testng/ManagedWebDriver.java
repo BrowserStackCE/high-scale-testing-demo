@@ -1,10 +1,19 @@
-package com.browserstack.conf;
+package com.browserstack.webdriver.testng;
 
 import org.openqa.selenium.WebDriver;
 
+import com.browserstack.webdriver.config.Platform;
+import com.browserstack.webdriver.core.WebDriverFactory;
+
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @author Anirudha Khanna
+ */
 public class ManagedWebDriver {
-    private final WebDriverFactory webDriverFactory;
+
     private String testName;
+    private final WebDriverFactory webDriverFactory;
     private final Platform platform;
     private WebDriver webDriver;
 
@@ -15,18 +24,18 @@ public class ManagedWebDriver {
     }
 
     public String getTestName() {
-        return this.testName;
+        return testName;
     }
 
     public void setTestName(String testName) {
         this.testName = testName;
     }
 
+
     public WebDriver getWebDriver() {
         if (this.webDriver == null) {
-            this.webDriver = this.webDriverFactory.createWebDriverForPlatform(this.platform, this.testName);
+            this.webDriver = this.webDriverFactory.createWebDriverForPlatform(platform, testName);
         }
-
         return this.webDriver;
     }
 
@@ -39,6 +48,6 @@ public class ManagedWebDriver {
             this.webDriver.quit();
             this.webDriver = null;
         }
-
     }
+
 }

@@ -11,11 +11,17 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+
         <testng.version>7.1.0</testng.version>
         <selenium.version>3.141.59</selenium.version>
-        <testng.parallel.config>classes</testng.parallel.config>
-        <testng.parallel.threadCount>5</testng.parallel.threadCount>
-        <testng.parallel.dataprovider.threadcount>5</testng.parallel.dataprovider.threadcount>
+        <jackson.version>2.12.2</jackson.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <commons.lang3.version>3.11</commons.lang3.version>
+        <browserstack.local.version>1.0.6</browserstack.local.version>
+
+        <testng.parallel.threadCount>50</testng.parallel.threadCount>
+        <testng.parallel.dataprovider.threadcount>50</testng.parallel.dataprovider.threadcount>
+        <testng.parallel.config>methods</testng.parallel.config>
         <testng.suiteXml>src/test/resources/testng.xml</testng.suiteXml>
         <capabilities.config.file>capabilities.yml</capabilities.config.file>
     </properties>
@@ -27,47 +33,46 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.13.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.12.2</version>
-            <scope>test</scope>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>2.13.2</version>
-            <scope>test</scope>
+            <version>${jackson.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+            <scope>compile</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.22.0</version>
-            <scope>test</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>5.4</version>
-            <scope>test</scope>
+            <groupId>com.browserstack</groupId>
+            <artifactId>browserstack-local-java</artifactId>
+            <version>${browserstack.local.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -82,21 +87,9 @@
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <capabilities.config>${capabilities.config.file}</capabilities.config>
+                        <dataproviderthreadcount>${testng.parallel.dataprovider.threadcount}</dataproviderthreadcount>
+                        <threadcount>${testng.parallel.threadCount}</threadcount>
                     </systemPropertyVariables>
-                    <properties>
-                        <property>
-                            <name>parallel</name>
-                            <value>${testng.parallel.config}</value>
-                        </property>
-                        <property>
-                            <name>threadcount</name>
-                            <value>${testng.parallel.threadCount}</value>
-                        </property>
-                        <property>
-                            <name>dataproviderthreadcount</name>
-                            <value>${testng.parallel.dataprovider.threadcount}</value>
-                        </property>
-                    </properties>
                 </configuration>
             </plugin>
         </plugins>

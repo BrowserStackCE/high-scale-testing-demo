@@ -1,1 +1,5 @@
 /test-ng-sample/test-ng-sample.iml
+.idea
+target
+node_modules/
+results/

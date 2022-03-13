@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Suites">
-    <test name="parallel" thread-count="5">
+<suite name="All Suites" parallel="methods">
+
+    <test name="filter tests">
         <classes>
-            <class name="com.browserstack.FilterTest"/>
+            <class name="com.browserstack.tests.FilterTest"/>
         </classes>
     </test>
-   <!-- <test name="single">
-        <classes>
-            <class name="com.browserstack.FilterTest"/>
-        </classes>
-    </test>-->
+
 </suite>
