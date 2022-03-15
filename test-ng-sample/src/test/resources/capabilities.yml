@@ -34,16 +34,16 @@ cloudDriver:
       os_version: '10'
       browser: Edge
       browser_version: 'latest'
-      repeats: 50
+      repeats: 80
     - name: Win7_Chrome_latest
       os: Windows
       os_version: '7'
       browser: Chrome
       browser_version: latest
-      repeats: 50
+      repeats: 80
     - name: OSX_BigSur_Chrome_Latest
       os: OS X
       os_version: Big Sur
       browser: Safari
       browser_version: '14'
-      repeats: 50
+      repeats: 80
