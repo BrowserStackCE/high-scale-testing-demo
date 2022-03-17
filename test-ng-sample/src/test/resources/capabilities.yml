@@ -16,8 +16,8 @@ onPremDriver:
 
 cloudDriver:
   hubUrl: https://hub-cloud.browserstack.com/wd/hub
-#  user: BROWSERSTACK_USERNAME
-#  accessKey: BROWSERSTACK_ACCESSKEY
+  #  user: BROWSERSTACK_USERNAME
+  #  accessKey: BROWSERSTACK_ACCESSKEY
   localTunnel:
     enabled: false
   common_capabilities:
@@ -31,19 +31,25 @@ cloudDriver:
   platforms:
     - name: Win10_Edge_latest
       os: Windows
-      os_version: '10'
+      os_version: "10"
       browser: Edge
-      browser_version: 'latest'
-      repeats: 80
+      browser_version: "latest"
+      repeats: 200
+    - name: Win11_Edge_latest
+      os: Windows
+      os_version: "11"
+      browser: Edge
+      browser_version: "latest"
+      repeats: 200
     - name: Win7_Chrome_latest
       os: Windows
-      os_version: '7'
+      os_version: "7"
       browser: Chrome
       browser_version: latest
-      repeats: 80
-    - name: OSX_BigSur_Chrome_Latest
+      repeats: 100
+    - name: OSX_BigSur_Safari_Latest
       os: OS X
       os_version: Big Sur
       browser: Safari
-      browser_version: '14'
-      repeats: 80
+      browser_version: "14"
+      repeats: 100
