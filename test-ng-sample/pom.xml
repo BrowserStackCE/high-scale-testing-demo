@@ -12,15 +12,21 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+        <project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
+
         <testng.version>7.1.0</testng.version>
         <selenium.version>3.141.59</selenium.version>
         <jackson.version>2.12.2</jackson.version>
         <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
         <commons.lang3.version>3.11</commons.lang3.version>
         <browserstack.local.version>1.0.6</browserstack.local.version>
 
         <testng.parallel.threadCount>50</testng.parallel.threadCount>
-        <testng.parallel.dataprovider.threadcount>50</testng.parallel.dataprovider.threadcount>
+        <testng.parallel.dataprovider.threadcount>100</testng.parallel.dataprovider.threadcount>
         <testng.parallel.config>methods</testng.parallel.config>
         <testng.suiteXml>src/test/resources/testng.xml</testng.suiteXml>
         <capabilities.config.file>capabilities.yml</capabilities.config.file>
@@ -64,7 +70,14 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-            <scope>compile</scope>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>

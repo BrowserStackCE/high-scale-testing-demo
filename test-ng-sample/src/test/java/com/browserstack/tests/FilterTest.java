@@ -5,10 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.browserstack.webdriver.testng.ManagedWebDriver;
 
+@Ignore
 public class FilterTest extends BaseTest {
 
     @Test(dataProvider = "webdriver")
