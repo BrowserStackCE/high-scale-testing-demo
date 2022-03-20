@@ -71,3 +71,21 @@ cloudDriver:
       browser: Safari
       browser_version: "12"
       repeats: 100
+    - name: OSX_Catalina_Safari_Latest
+      os: OS X
+      os_version: Catalina
+      browser: Safari
+      browser_version: "13"
+      repeats: 40
+    - name: Win8_Chrome_latest
+      os: Windows
+      os_version: "8"
+      browser: Chrome
+      browser_version: "latest"
+      repeats: 40
+    - name: Win8_1_Edge_latest
+      os: Windows
+      os_version: "8.1"
+      browser: Chrome
+      browser_version: "latest"
+      repeats: 40
