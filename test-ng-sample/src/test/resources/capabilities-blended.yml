@@ -40,7 +40,7 @@ cloudDriver:
       os_version: "11"
       browser: Edge
       browser_version: "latest"
-      repeats: 100
+      repeats: 200
     - name: Win7_Chrome_latest
       os: Windows
       os_version: "7"
