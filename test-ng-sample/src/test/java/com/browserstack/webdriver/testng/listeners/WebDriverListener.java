@@ -47,7 +47,7 @@ public class WebDriverListener extends TestListenerAdapter {
         String status = TEST_PASS_STATUS;
         String reason = TEST_PASS_REASON;
 
-        if (WebDriverFactory.getInstance().isForceFailTests()) {
+        if (WebDriverFactory.getInstance().isForceFailTests() && isFailPlatform(testResult.getParameters())) {
             status = TEST_FAIL_STATUS;
             reason = TEST_FAIL_REASON;
         }

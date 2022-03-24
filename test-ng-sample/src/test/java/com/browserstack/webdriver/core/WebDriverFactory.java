@@ -288,7 +288,7 @@ public class WebDriverFactory {
     public Boolean isForceFailTests() {
         boolean failTests = this.webDriverConfiguration.getForceFailTests();
         if (StringUtils.isNoneEmpty(System.getProperty("capabilities.config.forcefail"))) {
-            failTests = Boolean.valueOf(System.getProperty("capabilities.config.forcefail"));
+            failTests = Boolean.parseBoolean(System.getProperty("capabilities.config.forcefail"));
         }
         return failTests;
     }
