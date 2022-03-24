@@ -27,6 +27,7 @@ public class WebDriverListener extends TestListenerAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverListener.class);
     private static final String TEST_PASS_REASON = "Test Passed";
+    private static final String TEST_FAIL_REASON = "Test Failed with some useful information.";
     private static final String TEST_PASS_STATUS = "passed";
     private static final String TEST_FAIL_STATUS = "failed";
 
@@ -43,7 +44,14 @@ public class WebDriverListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult testResult) {
         super.onTestFailure(testResult);
         WebDriver webDriver = getWebDriverFromParameters(testResult.getParameters());
-        markAndCloseWebDriver(webDriver, TEST_FAIL_STATUS, testResult.getThrowable().toString());
+        String status = TEST_PASS_STATUS;
+        String reason = TEST_PASS_REASON;
+
+        if (WebDriverFactory.getInstance().isForceFailTests()) {
+            status = TEST_FAIL_STATUS;
+            reason = TEST_FAIL_REASON;
+        }
+        markAndCloseWebDriver(webDriver, status, reason);
     }
 
     private WebDriver getWebDriverFromParameters(Object[] parameters) {
@@ -59,6 +67,17 @@ public class WebDriverListener extends TestListenerAdapter {
         return webDriver;
     }
 
+    private boolean isFailPlatform(Object[] parameters) {
+        Optional<Object> webDriverParam = Arrays.stream(parameters).filter(p -> p instanceof WebDriver).findFirst();
+        WebDriver webDriver = (WebDriver) webDriverParam.orElse(null);
+        if (webDriver != null) {
+            return false;
+        }
+
+        Optional<Object> managedWebDriverParam = Arrays.stream(parameters).filter(p -> p instanceof ManagedWebDriver).findFirst();
+        ManagedWebDriver managedWebDriver = (ManagedWebDriver) managedWebDriverParam.get();
+        return managedWebDriver.isFailPlatform();
+    }
 
     private void markAndCloseWebDriver(WebDriver webDriver, String status, String reason) {
         if (webDriver == null) {

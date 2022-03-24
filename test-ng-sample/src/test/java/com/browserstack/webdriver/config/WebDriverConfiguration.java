@@ -26,6 +26,8 @@ public class WebDriverConfiguration {
     @JsonProperty("cloudDriver")
     private RemoteDriverConfig cloudDriverConfig;
 
+    private Boolean forceFailTests = false;
+
     public List<Platform> getActivePlatforms() {
         List<Platform> activePlatforms = Collections.emptyList();
         switch (driverType) {
@@ -96,5 +98,13 @@ public class WebDriverConfiguration {
             return "";
         }
         return this.namedTestUrls.get(name);
+    }
+
+    public Boolean getForceFailTests() {
+        return forceFailTests;
+    }
+
+    public void setForceFailTests(Boolean forceFailTests) {
+        this.forceFailTests = forceFailTests;
     }
 }

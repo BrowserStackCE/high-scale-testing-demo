@@ -285,4 +285,8 @@ public class WebDriverFactory {
         return buildName + "-" + buildSuffix;
     }
 
+    public Boolean isForceFailTests() {
+        return this.webDriverConfiguration.getForceFailTests();
+    }
+
 }

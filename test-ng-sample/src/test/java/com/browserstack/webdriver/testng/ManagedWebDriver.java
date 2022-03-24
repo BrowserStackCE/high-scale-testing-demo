@@ -50,4 +50,7 @@ public class ManagedWebDriver {
         }
     }
 
+    public boolean isFailPlatform() {
+        return this.platform.getBrowser().equalsIgnoreCase("Safari");
+    }
 }
