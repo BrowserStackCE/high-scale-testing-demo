@@ -42,7 +42,6 @@ public class WebDriverListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult testResult) {
-        super.onTestFailure(testResult);
         WebDriver webDriver = getWebDriverFromParameters(testResult.getParameters());
         String status = TEST_PASS_STATUS;
         String reason = TEST_PASS_REASON;
@@ -50,6 +49,9 @@ public class WebDriverListener extends TestListenerAdapter {
         if (WebDriverFactory.getInstance().isForceFailTests() && isFailPlatform(testResult.getParameters())) {
             status = TEST_FAIL_STATUS;
             reason = TEST_FAIL_REASON;
+            super.onTestFailure(testResult);
+        } else {
+            super.onTestSuccess(testResult);
         }
         markAndCloseWebDriver(webDriver, status, reason);
     }
