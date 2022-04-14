@@ -29,23 +29,11 @@ cloudDriver:
       browserstack.console: debug
       browserstack.selenium_version: 3.141.59
   platforms:
-    - name: Win10_Edge_latest
-      os: Windows
-      os_version: "10"
-      browser: Edge
-      browser_version: "latest"
-      repeats: 20
     - name: Win11_Edge_latest
       os: Windows
       os_version: "11"
       browser: Edge
       browser_version: "latest"
-      repeats: 20
-    - name: Win7_Chrome_latest
-      os: Windows
-      os_version: "7"
-      browser: Chrome
-      browser_version: latest
       repeats: 20
     - name: OSX_BigSur_Safari_Latest
       os: OS X
@@ -58,33 +46,4 @@ cloudDriver:
       os_version: "9.0"
       browser: Chrome
       repeats: 4
-    - name: Samsung_Galaxy_S21_Chrome
-      device: "Samsung Galaxy S21"
-      os_version: "11.0"
-      browser: Chrome
-      repeats: 4
-    - name: Samsung_Galaxy_S9_Chrome
-      device: "Samsung Galaxy S9"
-      os_version: "8.0"
-      browser: Chrome
-      repeats: 4
-    - name: iPhone13
-      device: "iPhone 13"
-      os_version: "15"
-      browser: Safari
-      repeats: 4
-    - name: iPhoneXS
-      device: "iPhone XS"
-      os_version: "14"
-      browser: Safari
-      repeats: 4
-    - name: iPhone13Mini
-      device: "iPhone 13 Mini"
-      os_version: "15"
-      browser: Safari
-      repeats: 4
-    - name: iPhone13Pro
-      device: "iPhone 13 Pro"
-      os_version: "15"
-      browser: Safari
-      repeats: 4
+
