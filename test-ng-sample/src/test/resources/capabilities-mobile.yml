@@ -27,64 +27,68 @@ cloudDriver:
       browserstack.debug: true
       browserstack.networkLogs: false
       browserstack.console: debug
-      browserstack.selenium_version: 3.141.59
   platforms:
-    - name: Win10_Edge_latest
-      os: Windows
-      os_version: "10"
-      browser: Edge
-      browser_version: "latest"
-      repeats: 200
-    - name: Win11_Edge_latest
-      os: Windows
-      os_version: "11"
-      browser: Edge
-      browser_version: "latest"
-      repeats: 200
-    - name: Win7_Chrome_latest
-      os: Windows
-      os_version: "7"
-      browser: Chrome
-      browser_version: latest
-      repeats: 200
-    - name: OSX_BigSur_Safari_Latest
-      os: OS X
-      os_version: Big Sur
-      browser: Safari
-      browser_version: "14"
-      repeats: 100
-    - name: Samsung_Galaxy_S10_Chrome
-      device: "Samsung Galaxy S10"
-      os_version: "9.0"
-      browser: Chrome
-      repeats: 40
-    - name: Samsung_Galaxy_S21_Chrome
-      device: "Samsung Galaxy S21"
-      os_version: "11.0"
-      browser: Chrome
-      repeats: 80
-    - name: Samsung_Galaxy_S9_Chrome
-      device: "Samsung Galaxy S9"
-      os_version: "8.0"
-      browser: Chrome
-      repeats: 40
-    - name: iPhone13
+# iOS Devices
+    - name: iPhone_13-15
       device: "iPhone 13"
       os_version: "15"
       browser: Safari
-      repeats: 80
-    - name: iPhoneXS
+      repeats: 150
+    - name: iPhone_XS-14
       device: "iPhone XS"
       os_version: "14"
       browser: Safari
-      repeats: 80
-    - name: iPhone13Mini
+      repeats: 100
+    - name: iPhone_11-14
+      device: "iPhone 11"
+      os_version: "14"
+      browser: Safari
+      repeats: 100
+    - name: iPhone_13_Mini-15
       device: "iPhone 13 Mini"
       os_version: "15"
       browser: Safari
-      repeats: 40
-    - name: iPhone13Pro
-      device: "iPhone 13 Pro"
+      repeats: 100
+    - name: iPhone_8-15
+      device: "iPhone 8"
       os_version: "15"
       browser: Safari
-      repeats: 40
+      repeats: 100
+    - name: iPhone_12_Pro-14
+      device: "iPhone 12 Pro"
+      os_version: "14"
+      browser: Safari
+      repeats: 50
+    - name: iPhone_12_Mini-14
+      device: "iPhone 12 Mini"
+      os_version: "14"
+      browser: Safari
+      repeats: 50
+    - name: iPhone_8-12
+      device: "iPhone 8"
+      os_version: "12"
+      browser: Safari
+      repeats: 50
+    - name: iPhone_8-13
+      device: "iPhone 8"
+      os_version: "13"
+      browser: Safari
+      repeats: 50
+# Android Devices
+    - name: Samsung_Galaxy_S21-11_Chrome
+      device: "Samsung Galaxy S21"
+      os_version: "11.0"
+      browser: chrome
+      repeats: 150
+      real_mobile: true
+    - name: Samsung_Galaxy_S21-12_Chrome
+      device: "Samsung Galaxy S21"
+      os_version: "12.0"
+      browser:chrome
+      repeats: 50
+      real_mobile: true
+    - name: Samsung_Galaxy_S22-12_Chrome
+      device: "Samsung Galaxy S22"
+      os_version: "12.0"
+      browser: chrome
+      repeats: 50
