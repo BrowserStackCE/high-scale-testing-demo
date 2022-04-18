@@ -34,19 +34,19 @@ cloudDriver:
       os_version: "11"
       browser: Edge
       browser_version: "latest"
-      repeats: 200
+      repeats: 100
     - name: Win10_Edge_latest
       os: Windows
       os_version: "10"
       browser: Edge
       browser_version: "latest"
-      repeats: 200
+      repeats: 400
     - name: WinXP_IE_7
       os: Windows
       os_version: "XP"
       browser: IE
       browser_version: "7.0"
-      repeats: 100
+      repeats: 50
 #      capabilities:
 #        - browserstack.selenium_version: 3.5.2
     - name: Win8_1_IE_7
@@ -54,7 +54,7 @@ cloudDriver:
       os_version: "8.1"
       browser: IE
       browser_version: "11.0"
-      repeats: 100
+      repeats: 50
 #      capabilities:
 #        - browserstack.selenium_version: 3.5.2
 # macOS Desktop Parallels
