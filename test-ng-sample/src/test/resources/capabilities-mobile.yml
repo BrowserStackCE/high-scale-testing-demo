@@ -84,7 +84,7 @@ cloudDriver:
     - name: Samsung_Galaxy_S21-12_Chrome
       device: "Samsung Galaxy S21"
       os_version: "12.0"
-      browser:chrome
+      browser: chrome
       repeats: 50
       real_mobile: true
     - name: Samsung_Galaxy_S22-12_Chrome
