@@ -1,9 +1,11 @@
 package com.browserstack.webdriver.testng;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
@@ -20,11 +22,14 @@ import com.browserstack.webdriver.core.WebDriverFactory;
  */
 public class LazyInitWebDriverIterator implements Iterator<Object[]> {
 
+    private static final int DASHBOARD_BUILD_LIMIT = 10;
+    private static final String DEFAULT_BUILD_ENV_NAME = "BROWSERSTACK_BUILD_NAME";
     private final String testMethodName;
     private final List<Platform> platforms;
     private final List<Object[]> testParams;
     private final boolean createManagedWebDriver;
     private int paramIdx = 0;
+    private int iteratorCount = 0;
 
     public LazyInitWebDriverIterator(String testMethodName, Object[] testParams) {
         this(false, testMethodName, testParams);
@@ -127,7 +132,33 @@ public class LazyInitWebDriverIterator implements Iterator<Object[]> {
                 methodTestParams[methodTestParams.length - 1] = webDriver;
             }
         }
+        iteratorCount++;
+        renameBuild();
 
         return methodTestParams;
+    }
+
+    private void renameBuild() {
+        if (iteratorCount < DASHBOARD_BUILD_LIMIT) {
+            return;
+        }
+        String buildName = System.getenv(DEFAULT_BUILD_ENV_NAME);
+        if (StringUtils.isNotEmpty(buildName)) {
+            buildName += "-ext";
+            overwriteEnvVar(DEFAULT_BUILD_ENV_NAME, buildName);
+        }
+    }
+
+    private void overwriteEnvVar(String key, String value) {
+        try {
+            Map<String, String> env = System.getenv();
+            Class<?> cl = env.getClass();
+            Field field = cl.getDeclaredField("m");
+            field.setAccessible(true);
+            Map<String, String> writableEnv = (Map<String, String>) field.get(env);
+            writableEnv.put(key, value);
+        } catch (Exception e) {
+            System.err.println("Unable to overwrite environment Variable");
+        }
     }
 }
