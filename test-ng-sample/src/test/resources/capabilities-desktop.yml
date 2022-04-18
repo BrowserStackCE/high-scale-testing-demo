@@ -40,7 +40,7 @@ cloudDriver:
       os_version: "10"
       browser: Edge
       browser_version: "latest"
-      repeats: 700
+      repeats: 200
     - name: WinXP_IE_7
       os: Windows
       os_version: "XP"
@@ -73,8 +73,8 @@ cloudDriver:
     - name: OSX_HighSierra_Safari_11_1
       os: OS X
       os_version: High Sierra
-      browser: Safari
-      browser_version: "11.1"
+      browser: Chrome
+      browser_version: "98.0"
       repeats: 100
     - name: OSX_BigSur_Safari_14
       os: OS X
