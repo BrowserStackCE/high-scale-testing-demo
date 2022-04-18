@@ -40,5 +40,6 @@ public class BrowserStackSearchTest extends BaseTest {
         /* =================== Verify ================= */
 //        Assert.assertTrue(StringUtils.isNoneEmpty(pageTitle));
 //        Assert.assertTrue(pageTitle.contains("Most Reliable App & Cross Browser Testing Platform | BrowserStack"));
+        webDriver.get("httpps://www.browserstack.com");
     }
 }

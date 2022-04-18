@@ -47,16 +47,16 @@ cloudDriver:
       browser: IE
       browser_version: "7.0"
       repeats: 100
-      capabilities:
-        - browserstack.selenium_version: 3.5.2
+#      capabilities:
+#        - browserstack.selenium_version: 3.5.2
     - name: Win8_1_IE_7
       os: Windows
       os_version: "8.1"
       browser: IE
       browser_version: "11.0"
       repeats: 100
-      capabilities:
-        - browserstack.selenium_version: 3.5.2
+#      capabilities:
+#        - browserstack.selenium_version: 3.5.2
 # macOS Desktop Parallels
     - name: OSX_Catalina_Chrome_98
       os: OS X
